@@ -1,0 +1,101 @@
+{
+  "name": "shake-hosted-wallet",
+  "description": "Shakepay's first hosted wallet",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "bin": {
+    "shaketh": "./scripts/cmd/shaketh.js"
+  },
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Roy",
+    "email": "breidiroy@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src"
+  },
+  "engines": {
+    "node": "8.9.0",
+    "yarn": "1.3.2"
+  },
+  "scripts": {
+    "pretest": "NODE_ENV=test npm run dbcreate && NODE_ENV=test npm run dbmigrate",
+    "test": "NODE_ENV=test npm run mocha && NODE_ENV=test npm run eslint",
+    "posttest": "NODE_ENV=test sequelize db:drop",
+    "postinstall": "npm run dbmigrate",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "dev": "nodemon src/",
+    "mocha": "mocha test/ --recursive",
+    "dbcreate": "sequelize db:drop || true && sequelize db:create",
+    "dbmigrate": "sequelize db:migrate",
+    "dbseed": "sequelize db:seed:all",
+    "acceptance": "rm -rf data/* && npm run dbcreate && npm run dbmigrate && npm run dbseed && npm start"
+  },
+  "dependencies": {
+    "@feathersjs/rest-client": "feathersjs/rest-client",
+    "addressparser": "^1.0.1",
+    "bitcoinjs-lib": "^3.3.0",
+    "body-parser": "^1.17.2",
+    "coinselect": "^3.1.11",
+    "commander": "^2.11.0",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eth-lightwallet": "^2.5.4",
+    "ethereumjs-tx": "^1.3.3",
+    "ethereumjs-util": "^5.1.2",
+    "feathers": "^2.1.3",
+    "feathers-authentication": "^1.2.7",
+    "feathers-authentication-hooks": "shakepay/feathers-authentication-hooks#56663f6",
+    "feathers-authentication-jwt": "^0.3.2",
+    "feathers-authentication-local": "^0.4.3",
+    "feathers-authentication-management": "^1.0.3",
+    "feathers-configuration": "^0.4.1",
+    "feathers-errors": "^2.8.1",
+    "feathers-hooks": "^2.0.1",
+    "feathers-hooks-common": "^3.5.1",
+    "feathers-logger": "^0.2.3",
+    "feathers-mailer": "^2.0.0",
+    "feathers-memory": "^1.1.0",
+    "feathers-rest": "^1.7.3",
+    "feathers-sequelize": "^2.3.2",
+    "google-libphonenumber": "^3.1.0",
+    "helmet": "^3.6.1",
+    "inquirer": "^5.1.0",
+    "intercom-client": "^2.9.1",
+    "jade": "^1.11.0",
+    "lodash": "^4.17.4",
+    "mocha": "^3.4.2",
+    "moment": "^2.19.1",
+    "newrelic": "^2.8.0",
+    "node-cron": "^1.2.1",
+    "nodemailer-mailgun-transport": "^1.3.6",
+    "pg": "^7.3.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "sequelize-cli": "^3.0.0",
+    "serve-favicon": "^2.4.3",
+    "superagent": "^3.8.2",
+    "twilio": "^3.12.0",
+    "uglify": "^0.1.5",
+    "uglify-js": "^3.3.10",
+    "web3": "^0.19.1",
+    "winston": "^2.3.1",
+    "winston-slack": "^0.1.6",
+    "wyre-api": "^1.0.1"
+  },
+  "devDependencies": {
+    "chance": "^1.0.12",
+    "feathers-authentication-client": "^0.3.3",
+    "handlebars": "^4.0.11",
+    "sinon": "^4.1.2"
+  }
+}
